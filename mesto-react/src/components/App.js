@@ -1,112 +1,78 @@
 
-
+import {useState} from 'react';
 import Header from './Header';
 import Footer from './Footer'
-import Main from './Main'
+import Main from './Main';
+import PopupWithForm from './PopupWithForm';
 
+const popupEditElement = document.querySelector('.popup_type_profile');
+const popupAddElement = document.querySelector('.popup_type_add');
+const popupAvatar = document.querySelector('.popup_type_avatar');
 
+//const popupFormEditElement = popupEditElement.querySelector('.popup__info_element_edit');
+//const popupFormAddElement = popupAddElement.querySelector('.popup__info_element_add');
+//const popupFormAvatar = popupAvatar.querySelector('.popup__info_element_avatar');
+
+const Avatar = document.querySelector('.profile__avatar');
+
+//const titleInput = popupFormEditElement.querySelector('.popup__form-input_name_title');
+//const subtitleInput = popupFormEditElement.querySelector('.popup__form-input_name_subtitle');
+//const headingInput = popupFormAddElement.querySelector('.popup__form-input_name_heading');
+//const linkInput = popupFormAddElement.querySelector('.popup__form-input_name_link');
+
+//const profileName = document.querySelector('.profile__name');
+//const profileDescription = document.querySelector('.profile__description');
+
+const popupEditOpenButtonElement = document.querySelector('.profile__edit-button');
+const popupAddOpenButtonElement = document.querySelector('.profile__add-button');
 
 function App() {
+  const [IsEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
+//попробовать открыть попап с аватаркой
+  function handleEditAvatarClick() {
+    setIsEditAvatarPopupOpen(true);
+  }
+
   return (
     <>
       <div className="page">
         <Header />
-        <Main />
+        <Main
+        onEditAvatar={handleEditAvatarClick}/>
         <Footer />
+        <PopupWithForm
+        name={"add"}
+        title={"Обновить аватар"}
+        isOpen={IsEditAvatarPopupOpen}
+        />
 
-        <div className="popup popup_type_profile">
-          <div className="popup__container">
-            <h2 className="popup__title">Редактировать профиль</h2>
-            <button className="popup__close-button button" type="button"></button>
-            <form className="popup__info popup__info popup__info_element_edit" name="formElement" novalidate>
-              <fieldset className="popup__form-info">
-                <label className="popup__label">
-                  <input className="popup__form-input popup__form-input_name_title" id="name" type="text" name="titleInput"
-                    placeholder="Имя" minlength="2" maxlength="40" required />
-                  <span className="popup__form-input-error"></span>
-                </label>
-                <label className="popup__label">
-                  <input className="popup__form-input popup__form-input_name_subtitle" id="text" type="text"
-                    name="subtitleInput" placeholder="О себе" minlength="2" maxlength="200" required />
-                  <span className="popup__form-input-error"></span>
-                </label>
-                <button className="popup__button-submit" type="submit">Сохранить</button>
-              </fieldset>
-            </form>
-          </div>
-        </div>
-        <div className="popup popup_type_add" >
-    //.id="popup_type_add"//
-          <div className="popup__container">
-            <h2 className="popup__title">Новое место</h2>
-            <button className="popup__close-button button" type="button"></button>
-            <form className="popup__info popup__info_element_add" name="formAddElement" id="formAddElement" novalidate>
-              <fieldset className="popup__form-info">
-                <label className="popup__label">
-                  <input className="popup__form-input popup__form-input_name_heading" id="heading" type="text"
-                    name="headingInput" placeholder="Название" minlength="2" maxlength="30" required />
-                  <span className="popup__form-input-error"></span>
-                </label>
-                <label className="popup__label">
-                  <input className="popup__form-input popup__form-input_name_link" id="link" type="url" name="linkInput"
-                    placeholder="Ссылка на картинку" required />
-                  <span className="popup__form-input-error"></span>
-                </label>
-                <button className="popup__button-submit" type="submit">Создать</button>
-              </fieldset>
-            </form>
-          </div>
-        </div>
-        <div className="popup popup_type_delete" id="popup_type_delete">
-          <div className="popup__container">
-            <form className="popup__info popup__info_element_delete" name="formDeleteElement" id="formDeleteElement" novalidate>
-              <h3 className="popup__title popup__title_delete">Вы уверены?</h3>
-              <button className="popup__button-submit" type="submit">Да</button>
-              <button className="popup__close-button button" type="button"></button>
-            </form>
-          </div>
-        </div>
-        <div className="popup popup_type_avatar">
-          <div className="popup__container">
-            <h2 className="popup__title">Обновить аватар</h2>
-            <form className="popup__info popup__info_element_avatar" name="formEditAvatarElement" novalidate>
-              <fieldset className="popup__form-info">
-                <label className="popup__label">
-                  <input className="popup__form-input popup__form-input_name_avatar" id="avatar" type="url" name="avatarInput"
-                    placeholder="Ссылка на картинку" required />
-                  <span className="popup__form-input-error"></span>
-                </label>
-                <button className="popup__button-submit" type="submit">Сохранить</button>
-              </fieldset>
-            </form>
-            <button className="popup__close-button button" type="button"></button>
-          </div>
-        </div>
-        <div className="popup popup_type_picture" id="popup_type_picture">
-          <div className="popup__picture-container">
-            <button className="popup__close-button button"></button>
-            <div className="popup__figure">
-              <img className="popup__picture" src="#" alt="" />
-              <div className="popup__picture-text"></div>
-            </div>
-          </div>
-        </div>
-        <template id="cards-template">
-          <li className="cards__card">
-            <img src="#" className="cards__image" alt="" />
-            <div className="cards__description">
-              <h2 className="cards__description-title"></h2>
-              <div className="cards__section-likes">
-                <button aria-label="Нравится" className="cards__likes-button" type="button"></button>
-                <p className="cards__likes-number"></p>
-              </div>
-              <button aria-label="Удалить" className="cards__delete-button button" type="button"></button>
-            </div>
-          </li>
-        </template>
       </div>
     </>
   );
 }
 
 export default App;
+
+//const ButtonEditProfile = document.
+//handleEditAvatarClick;
+
+
+
+//function handleEditProfileClick() {
+  //popupEditElement.classList.add('popup_is-opened');
+//};
+
+//popupEditOpenButtonElement.addEventListener('click', handleEditProfileClick)
+//handleAddPlaceClick;
+
+//function handleAddPlaceClick() {
+  //popupAddElement.classList.add('popup_is-opened')
+//}
+
+//popupAddOpenButtonElement.addEventListener('click', handleAddPlaceClick)
+
+
+ // popupAvatar.classList.add('popup_is-opened')
+//}
+
+//Avatar.addEventListener('click', handleEditAvatarClick)
