@@ -1,7 +1,7 @@
 import avatar from '../images/profile-avatar.jpg';
 import Card from './Card';
 
-function Main({ onEditAvatar, onEditProfile, onAdd, userName, userAvatar, userDescription, cards }) {
+function Main({ onEditAvatar, onEditProfile, onAdd, userName, userAvatar, userDescription, cards, onCardClick }) {
   return (
     <main className="content">
       <section className="profile">
@@ -26,6 +26,7 @@ function Main({ onEditAvatar, onEditProfile, onAdd, userName, userAvatar, userDe
               <Card
                 card={card}
                 key={card._id}
+                onCardClick={onCardClick}
               />
             );
           })}
