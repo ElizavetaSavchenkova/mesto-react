@@ -9,7 +9,7 @@ import ImagePopup from './ImagePopup';
 
 
 function App() {
-  const [IsEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setisAddPlacePopupOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
@@ -69,7 +69,7 @@ function App() {
         <PopupWithForm
           name={"avatar"}
           title={"Обновить аватар"}
-          isOpen={IsEditAvatarPopupOpen}
+          isOpen={isEditAvatarPopupOpen}
           onClose={closeAllPopups}
           buttonText={"Сохранить"}>
           <label className="popup__label">
