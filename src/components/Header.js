@@ -1,3 +1,4 @@
+import React from "react";
 import headerLogo from '../images/logo.svg';
 
 function Header() {
@@ -5,7 +6,6 @@ function Header() {
     <header className="header">
       <img alt='Логотип Mesto' src={headerLogo} className="header__logo" />
     </header>
-
   )
 }
 

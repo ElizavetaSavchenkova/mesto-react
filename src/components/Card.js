@@ -6,19 +6,17 @@ function Card({ card, onCardClick }) {
   }
 
   return (
-
-      <li class="cards__card">
-        <img src={card.link} class="cards__image" alt="" onClick={handleCardClick}/>
-        <div class="cards__description">
-          <h2 class="cards__description-title">{card.name}</h2>
-          <div class="cards__section-likes">
-            <button aria-label="Нравится" class="cards__likes-button" type="button"></button>
-            <p class="cards__likes-number">{card.likes.length}</p>
-          </div>
-          <button aria-label="Удалить" class="cards__delete-button button" type="button" ></button>
+    <li className="cards__card">
+      <img src={card.link} className="cards__image" alt={card.name} onClick={handleCardClick} />
+      <div className="cards__description">
+        <h2 className="cards__description-title">{card.name}</h2>
+        <div className="cards__section-likes">
+          <button aria-label="Нравится" className="cards__likes-button" type="button"></button>
+          <p className="cards__likes-number">{card.likes.length}</p>
         </div>
-      </li>
-
+        <button aria-label="Удалить" className="cards__delete-button button" type="button" ></button>
+      </div>
+    </li>
   );
 }
 

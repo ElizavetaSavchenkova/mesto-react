@@ -1,7 +1,7 @@
-import avatar from '../images/profile-avatar.jpg';
+import React from "react";
 import Card from './Card';
 
-function Main({ onEditAvatar, onEditProfile, onAdd, userName, userAvatar, userDescription, cards, onCardClick }) {
+function Main({ onEditAvatar, onEditProfile, onAddPlace, userName, userAvatar, userDescription, cards, onCardClick}) {
   return (
     <main className="content">
       <section className="profile">
@@ -17,11 +17,11 @@ function Main({ onEditAvatar, onEditProfile, onAdd, userName, userAvatar, userDe
             <p className="profile__description">{userDescription}</p>
           </div>
         </div>
-        <button aria-label="Добавить содержимое" className="profile__add-button button" type="button" onClick={onAdd}></button>
+        <button aria-label="Добавить содержимое" className="profile__add-button button" type="button" onClick={onAddPlace}></button>
       </section>
-      <section class="cards">
-        <ul class="cards__list">
-        {cards.map((card) => {
+      <section className="cards">
+        <ul className="cards__list">
+          {cards.map((card) => {
             return (
               <Card
                 card={card}
