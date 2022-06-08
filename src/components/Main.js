@@ -1,20 +1,24 @@
 import React from "react";
 import Card from './Card';
+import { CurrentUserContext } from '../contexts/CurrentUserContext'
 
-function Main({ onEditAvatar, onEditProfile, onAddPlace, userName, userAvatar, userDescription, cards, onCardClick}) {
+function Main({ onEditAvatar, onEditProfile, onAddPlace, cards, onCardClick, onCardLike, onCardDelete}) {
+
+  const currentUser = React.useContext(CurrentUserContext);
+
   return (
     <main className="content">
       <section className="profile">
         <div className="profile__container">
           <div className="profile__avatar-container">
-            <img src={userAvatar} className="profile__avatar" alt="Аватар пользователя" onClick={onEditAvatar} />
+            <img src={currentUser.avatar} className="profile__avatar" alt="Аватар пользователя" onClick={onEditAvatar} />
           </div>
           <div className="profile__info">
             <div className="profile__row">
-              <h1 className="profile__name">{userName}</h1>
+              <h1 className="profile__name">{currentUser.name}</h1>
               <button aria-label="Редактировать профиль" className="profile__edit-button button" type="button" onClick={onEditProfile}></button>
             </div>
-            <p className="profile__description">{userDescription}</p>
+            <p className="profile__description">{currentUser.about}</p>
           </div>
         </div>
         <button aria-label="Добавить содержимое" className="profile__add-button button" type="button" onClick={onAddPlace}></button>
@@ -27,6 +31,8 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, userName, userAvatar, u
                 card={card}
                 key={card._id}
                 onCardClick={onCardClick}
+                onCardLike={onCardLike}
+                onCardDelete={onCardDelete}
               />
             );
           })}

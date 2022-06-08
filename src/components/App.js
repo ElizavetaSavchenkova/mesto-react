@@ -6,13 +6,17 @@ import Main from './Main';
 import PopupWithForm from './PopupWithForm';
 import api from '../utils/api';
 import ImagePopup from './ImagePopup';
+import { CurrentUserContext } from '../contexts/CurrentUserContext'
 
 
 function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setisAddPlacePopupOpen] = useState(false);
+  //const [User, setUser] = useState({});
+
   const [currentUser, setCurrentUser] = useState({});
+
   const [cards, setCards] = useState([]);
   const [selectedCard, setSelectedCard] = useState({});
 
@@ -50,19 +54,34 @@ function App() {
     setSelectedCard(card);
   }
 
+  function handleCardLike(card) {
+    const isLiked = card.likes.some(i => i._id === currentUser._id);
+
+    api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
+      setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+    });
+  }
+
+  function handleCardDelete(card) {
+    api.deleteCard(card._id)
+      .then(() => {
+        setCards((state) => state.filter((c) => c._id !== card._id));
+      })
+  }
+
+
   return (
-    <>
+    <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
         <Header />
         <Main
-          userName={currentUser.name}
-          userAvatar={currentUser.avatar}
-          userDescription={currentUser.about}
           onEditAvatar={handleEditAvatarClick}
           onEditProfile={handleEditProfileClick}
           onAddPlace={handleAddPlaceClick}
           cards={cards}
           onCardClick={handleCardClick}
+          onCardLike={handleCardLike}
+          onCardDelete={handleCardDelete}
         />
         <Footer />
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />
@@ -120,7 +139,7 @@ function App() {
           buttonText={"Да"}>
         </PopupWithForm>
       </div>
-    </>
+    </CurrentUserContext.Provider>
   );
 }
 
