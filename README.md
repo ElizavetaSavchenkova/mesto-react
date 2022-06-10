@@ -11,5 +11,3 @@
 <li>JSX разметка</li>
 <li>Webpack</li>
 
-<p>Основные ссылки в рамках проекта:</p>
-<li>Ссылка на проект - https://elizavetasavchenkova.github.io/mesto/</li>
