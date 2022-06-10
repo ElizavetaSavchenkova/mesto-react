@@ -15,7 +15,7 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
   }
 
   useEffect(() => {
-    updatedAvatar.current.value = currentUser.avatar;
+    updatedAvatar.current.value = '';
   }, [currentUser]);
 
   return (

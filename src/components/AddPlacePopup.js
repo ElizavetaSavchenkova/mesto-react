@@ -3,8 +3,8 @@ import PopupWithForm from './PopupWithForm'
 
 
 function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
-  const [name, setName] = useState();
-  const [link, setLink] = useState();
+  const [name, setName] = useState('');
+  const [link, setLink] = useState('');
 
   function handleSubmit(event) {
     event.preventDefault()

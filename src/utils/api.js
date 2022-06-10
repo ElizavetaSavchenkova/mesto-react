@@ -48,17 +48,17 @@ class Api {
   }
 
   //addNewLikes(cardId) {
-    //return fetch(`${this._url}/cards/likes/${cardId}`, {
-    //  method: 'PUT',
-    //  headers: this._headers
-   // }).then((res) => this._checkResponse(res));
+  //return fetch(`${this._url}/cards/likes/${cardId}`, {
+  //  method: 'PUT',
+  //  headers: this._headers
+  // }).then((res) => this._checkResponse(res));
   //}
 
   //deleteLikes(cardId) {
   //  return fetch(`${this._url}/cards/likes/${cardId}`, {
-   //   method: 'DELETE',
-   //   headers: this._headers
-   // }).then((res) => this._checkResponse(res));
+  //   method: 'DELETE',
+  //   headers: this._headers
+  // }).then((res) => this._checkResponse(res));
   //}
 
   deleteCard(cardId) {
